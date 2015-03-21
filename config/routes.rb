@@ -1,4 +1,9 @@
 Hr::Application.routes.draw do
+  
+  resources :skills
+
+  root 'pages#home' 
+
   resources :vacancies
 
   resources :employees
@@ -58,5 +63,4 @@ Hr::Application.routes.draw do
   #     resources :products
   #   end
 
-  root 'pages#home' 
 end

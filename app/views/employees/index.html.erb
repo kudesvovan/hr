@@ -33,3 +33,21 @@
 <br>
 
 <%= link_to 'New Employee', new_employee_path %>
+
+<br>
+
+<h1>Выбрать умения из списка:</h1>
+
+<table class="table table-striped">
+  <thead>
+  </thead>
+  <tbody>
+    <% @skills.each do |skill| %>
+    <tr>
+      <td><%= skill.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Skill', new_skill_path %>

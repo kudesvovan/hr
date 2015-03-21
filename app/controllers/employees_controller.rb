@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all
+    @skills = Skill.all
   end
 
   # GET /employees/1
@@ -15,6 +16,7 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    @skill = Skill.new
   end
 
   # GET /employees/1/edit
