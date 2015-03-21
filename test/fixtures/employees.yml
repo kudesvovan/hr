@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  contacts: MyString
+  status: MyString
+  salary: 1
+  skills: MyText
+
+two:
+  name: MyString
+  contacts: MyString
+  status: MyString
+  salary: 1
+  skills: MyText

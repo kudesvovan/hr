@@ -1,0 +1,35 @@
+<h1>Список работников</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ФИО</th>
+      <th>Контакты</th>
+      <th>Статус</th>
+      <th>Зарплата</th>
+      <th>Умения</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.contacts %></td>
+        <td><%= employee.status %></td>
+        <td><%= employee.salary %></td>
+        <td><%= employee.skills %></td>
+        <td><%= link_to 'Show', employee %></td> 
+        <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_employee_path(employee) %></td>
+        <td><%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employee', new_employee_path %>

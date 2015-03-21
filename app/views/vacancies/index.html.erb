@@ -1,0 +1,37 @@
+<h1>Список вакансий</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Дата создания</th>
+      <th>Срок действия</th>
+      <th>Зарплата</th>
+      <th>Контакты</th>
+      <th>Умения</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vacancies.each do |vacancy| %>
+      <tr>
+        <td><%= vacancy.name %></td>
+        <td><%= vacancy.date_in %></td>
+        <td><%= vacancy.date_up %></td>
+        <td><%= vacancy.salary %></td>
+        <td><%= vacancy.contacts %></td>
+        <td><%= vacancy.skills %></td>
+        <td><%= link_to 'Show', vacancy %></td>
+        <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_vacancy_path(vacancy) %></td>
+        <td><%= link_to '<i class="glyphicon glyphicon-trash">'.html_safe, vacancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vacancy', new_vacancy_path %>

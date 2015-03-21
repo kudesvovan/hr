@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date_in: 2015-03-21
+  date_up: 2015-03-21
+  salary: 1
+  contacts: MyString
+  skills: MyText
+
+two:
+  name: MyString
+  date_in: 2015-03-21
+  date_up: 2015-03-21
+  salary: 1
+  contacts: MyString
+  skills: MyText
