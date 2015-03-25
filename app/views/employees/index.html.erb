@@ -21,7 +21,8 @@
         <td><%= employee.contacts %></td>
         <td><%= employee.status %></td>
         <td><%= employee.salary %></td>
-        <td><%= employee.skills %></td>
+        <td><%= skills(employee) %></td>
+        </td>
         <td><%= link_to 'Show', employee %></td> 
         <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_employee_path(employee) %></td>
         <td><%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,21 +34,3 @@
 <br>
 
 <%= link_to 'New Employee', new_employee_path %>
-
-<br>
-
-<h1>Выбрать умения из списка:</h1>
-
-<table class="table table-striped">
-  <thead>
-  </thead>
-  <tbody>
-    <% @skills.each do |skill| %>
-    <tr>
-      <td><%= skill.name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New Skill', new_skill_path %>

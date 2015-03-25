@@ -21,12 +21,15 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1/edit
   def edit
+    @skills = Skill.all
   end
 
   # POST /employees
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
+    @skills = Skill.where(:id => params[:organizing_team])
+    @employee.skills << @skills
 
     respond_to do |format|
       if @employee.save
@@ -42,6 +45,10 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
+    @employee = Employee.find(params[:id])
+    @skills = SKill.where(:id => params[:organizing_team])
+    @employee.skills.destroy_all
+    @employee.skills << @skills
     respond_to do |format|
       if @employee.update(employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }

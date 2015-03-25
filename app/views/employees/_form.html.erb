@@ -29,7 +29,8 @@
   </div>
   <div class="field">
     <%= f.label "Умения" %><br>
-    <%= f.text_area :skills %>
+    <%= select_tag "organizing_team", options_from_collection_for_select(Skill.all, 'id', 'name', @employee.skills.map{|j| j.id}), :multiple => true %>
+    <%= link_to 'Создать новое умение', new_skill_path %>
   </div>
   <div class="actions">
     <%= f.submit %>

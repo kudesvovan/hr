@@ -25,6 +25,8 @@ class VacanciesController < ApplicationController
   # POST /vacancies.json
   def create
     @vacancy = Vacancy.new(vacancy_params)
+    @skills = Skill.where(:id => params[:organizing_team])
+    @vacancy.skills << @skills
 
     respond_to do |format|
       if @vacancy.save
@@ -40,6 +42,10 @@ class VacanciesController < ApplicationController
   # PATCH/PUT /vacancies/1
   # PATCH/PUT /vacancies/1.json
   def update
+    @vacancy = Vacancy.find(params[:id])
+    @skills = Skill.where(:id => params[:organizing_team])
+    @vacancy.skills.destroy_all
+    @vacancy.skills << @skills
     respond_to do |format|
       if @vacancy.update(vacancy_params)
         format.html { redirect_to @vacancy, notice: 'Vacancy was successfully updated.' }
