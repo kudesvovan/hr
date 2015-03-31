@@ -1,5 +1,5 @@
 Hr::Application.routes.draw do
-  
+
   resources :skills
 
   root 'pages#home' 

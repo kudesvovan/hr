@@ -21,7 +21,6 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1/edit
   def edit
-    @skills = Skill.all
   end
 
   # POST /employees
@@ -30,6 +29,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     @skills = Skill.where(:id => params[:organizing_team])
     @employee.skills << @skills
+    @employee.avatar = params[:file]
 
     respond_to do |format|
       if @employee.save
@@ -45,10 +45,10 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   # PATCH/PUT /employees/1.json
   def update
-    @employee = Employee.find(params[:id])
-    @skills = SKill.where(:id => params[:organizing_team])
     @employee.skills.destroy_all
+    @skills = Skill.where(:id => params[:organizing_team])
     @employee.skills << @skills
+    @employee.avatar = params[:file]
     respond_to do |format|
       if @employee.update(employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
@@ -78,6 +78,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :contacts, :status, :salary, :skills)
+      params.require(:employee).permit(:name, :contacts, :status, :salary, :skills, :avatar)
     end
 end

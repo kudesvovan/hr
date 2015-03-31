@@ -1,8 +1,8 @@
 <h1>Список работников</h1>
-
 <table class="table table-striped">
   <thead>
     <tr>
+      <th></th>
       <th>ФИО</th>
       <th>Контакты</th>
       <th>Статус</th>
@@ -17,6 +17,7 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
+        <td><%= image_tag employee.avatar_url(:thumb) if employee.avatar? %></td>
         <td><%= employee.name %></td>
         <td><%= employee.contacts %></td>
         <td><%= employee.status %></td>
