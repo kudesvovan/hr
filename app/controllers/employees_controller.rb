@@ -49,6 +49,7 @@ class EmployeesController < ApplicationController
     @skills = Skill.where(:id => params[:organizing_team])
     @employee.skills << @skills
     @employee.avatar = params[:file]
+
     respond_to do |format|
       if @employee.update(employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
@@ -78,6 +79,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :contacts, :status, :salary, :skills, :avatar)
+      params.require(:employee).permit(:name, :contacts, :status, :salary, :skills, :avatar, :remove_avatar, :avatar_cache)
     end
 end
