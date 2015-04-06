@@ -33,7 +33,8 @@
   </div>
   <div class="field">
     <%= f.label "Умения" %><br>
-    <%= select_tag "organizing_team", options_from_collection_for_select(Skill.all, 'id', 'name', @vacancy.skills.map{|j| j.id}), :multiple => true %>
+    <%= select_tag "organizing_team", options_from_collection_for_select(Skill.all, 'id', 'name', @vacancy.skills.map{|j| j.id}), :multiple => true %></br>
+    <%= link_to 'Создать новое умение', new_skill_path, remote: true, class: 'new_skill' %>
   </div>
   <div class="actions">
     <%= f.submit %>

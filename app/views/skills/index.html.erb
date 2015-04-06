@@ -1,29 +1,24 @@
 <h1>Каталог умений</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>Название</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @skills.each do |skill| %>
+<%= form_tag destroy_multiple_skills_path, method: :delete do %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= skill.id %></td>
-        <td><%= skill.name %></td>
-        <td><%= link_to 'Show', skill %></td>
-        <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_skill_path(skill) %></td>
-        <td><%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= check_box_tag "skills[]", skills_id(@skills) %></th>
+        <th>id</th>
+        <th>Название</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody class="skill-modal">  
+      <%= render @skills %>
+    </tbody>
+  </table>
+  <%= submit_tag "Delete selected", data: { confirm: 'Умение может быть использовано в вакансиях и сотрудниках. Игнорировать?' } %>
+<% end %>
 <br>
 
-<%= link_to 'New Skill', new_skill_path %>
+<%= link_to 'New Skill', new_skill_path, remote: true, class: "new_skill" %>

@@ -1,0 +1,1 @@
+$('#select').append("<%= j render options_from_collection_for_select(Skill.all, 'id', 'name', @employee.skills.map{|j| j.id}) %>")

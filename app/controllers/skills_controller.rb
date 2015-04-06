@@ -1,10 +1,12 @@
 class SkillsController < ApplicationController
+  protect_from_forgery
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /skills
   # GET /skills.json
   def index
     @skills = Skill.all
+    @skill = Skill.new
   end
 
   # GET /skills/1
@@ -25,10 +27,12 @@ class SkillsController < ApplicationController
   # POST /skills.json
   def create
     @skill = Skill.new(skill_params)
+    @skills = Skill.all
 
     respond_to do |format|
       if @skill.save
         format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @skill }
       else
         format.html { render :new }
@@ -57,6 +61,16 @@ class SkillsController < ApplicationController
     @skill.destroy
     respond_to do |format|
       format.html { redirect_to skills_url, notice: 'Skill was successfully destroyed.' }
+      format.js { render layout: false}
+      format.json { head :no_content }
+    end
+  end
+
+  def destroy_multiple
+    Skill.destroy(params[:skills])
+
+    respond_to do |format|
+      format.html { redirect_to skills_path }
       format.json { head :no_content }
     end
   end
@@ -70,5 +84,9 @@ class SkillsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
       params.require(:skill).permit(:name)
+    end
+
+    def skill_params_new
+      params.require(:employee).permit(:name)
     end
 end

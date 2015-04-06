@@ -1,6 +1,10 @@
 Hr::Application.routes.draw do
 
-  resources :skills
+  resources :skills do 
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
 
   root 'pages#home' 
 

@@ -1,6 +1,5 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-
   # GET /employees
   # GET /employees.json
   def index
@@ -27,13 +26,12 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
-    @skills = Skill.where(:id => params[:organizing_team])
-    @employee.skills << @skills
-    @employee.avatar = params[:file]
+    set_avatar
 
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new }
@@ -46,9 +44,8 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1.json
   def update
     @employee.skills.destroy_all
-    @skills = Skill.where(:id => params[:organizing_team])
-    @employee.skills << @skills
-    @employee.avatar = params[:file]
+    employee_find_skills
+    set_avatar
 
     respond_to do |format|
       if @employee.update(employee_params)
@@ -80,5 +77,18 @@ class EmployeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       params.require(:employee).permit(:name, :contacts, :status, :salary, :skills, :avatar, :remove_avatar, :avatar_cache)
+    end
+
+    def skill_params
+      params.require(:skill).permit(:name)
+    end
+
+    def employee_find_skills
+      @skills = Skill.where(:id => params[:organizing_team])
+      @employee.skills << @skills
+    end
+
+    def set_avatar
+      @employee.avatar = params[:file]
     end
 end
