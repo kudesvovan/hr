@@ -8,9 +8,27 @@ Hr::Application.routes.draw do
 
   root 'pages#home' 
 
-  resources :vacancies
+  get 'vacancy/vacancy_employees', to: 'vacancies#vacancy_employees'
+  resources :vacancies do
+    collection do 
+      delete "destroy_multiple"
+    end
+    member do
+      get 'vacancy_employees'
+    end
+  end
 
-  resources :employees
+
+  get 'employee/employee_vacancies', to: 'employees#employee_vacancies'
+
+  resources :employees do
+    collection do
+      delete 'destroy_multiple'
+    end
+    member do
+      get 'employee_vacancies'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

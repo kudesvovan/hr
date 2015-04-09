@@ -1,0 +1,26 @@
+<%= form_tag destroy_multiple_skills_path, method: :delete do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>id</th>
+        <th>Название</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody class="skill-modal">  
+      <%= render @skills %>
+    </tbody>
+  </table>
+  <%= submit_tag "Delete selected", data: { confirm: 'Умение может использоваться в вакансиях и сотрудниках. Продолжить?' } %>|
+  <%= link_to 'New Skill', new_skill_path, remote: true, class: "new_skill" %>
+<% end %>
+
+
+<%= will_paginate @skills, renderer: BootstrapPagination::Rails, class: "pagination-sm" %></br>
+<!--
+<%= link_to 'New Skill', new_skill_path, remote: true, class: "new_skill" %>
+-->

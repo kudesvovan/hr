@@ -5,8 +5,14 @@ class SkillsController < ApplicationController
   # GET /skills
   # GET /skills.json
   def index
-    @skills = Skill.all
+    @skills = Skill.search(params[:search]).paginate(:page => params[:page], :per_page => 8)
     @skill = Skill.new
+    respond_to do |format|
+      format.html { }
+      format.js
+    end
+
+    @skill_search = Skill.search(params[:search])
   end
 
   # GET /skills/1
@@ -67,10 +73,10 @@ class SkillsController < ApplicationController
   end
 
   def destroy_multiple
-    Skill.destroy(params[:skills])
+    Skill.destroy(params[:skills]) unless params[:skills].nil?
 
     respond_to do |format|
-      format.html { redirect_to skills_path }
+      format.html { redirect_to skills_url }
       format.json { head :no_content }
     end
   end
@@ -83,7 +89,7 @@ class SkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
-      params.require(:skill).permit(:name)
+      params.require(:skill).permit(:name, :search)
     end
 
     def skill_params_new

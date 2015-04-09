@@ -4,7 +4,7 @@ class VacanciesController < ApplicationController
   # GET /vacancies
   # GET /vacancies.json
   def index
-    @vacancies = Vacancy.all
+    @vacancies = Vacancy.search(params[:search]).paginate(:page => params[:page], :per_page => 8)
   end
 
   # GET /vacancies/1
@@ -65,6 +65,21 @@ class VacanciesController < ApplicationController
       format.html { redirect_to vacancies_url, notice: 'Vacancy was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def destroy_multiple
+    Vacancy.destroy(params[:vacancies]) unless params[:vacancies].nil?
+
+    respond_to do |format|
+      format.html { redirect_to vacancies_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def vacancy_employees
+    @vacancy = Vacancy.find_by_id(params[:vacancy])
+    @employees_all = full_fit_employees(@vacancy)
+    @employees_any = part_fit_employees(@vacancy)
   end
 
   private

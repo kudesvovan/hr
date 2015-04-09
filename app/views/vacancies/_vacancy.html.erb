@@ -1,0 +1,13 @@
+<tr>
+  <td><%= check_box_tag "vacancies[]", vacancy.id %></td>
+  <td><%= vacancy.name %></td>
+  <td><%= vacancy.date_in %></td>
+  <td><%= vacancy.date_up %></td>
+  <td><%= vacancy.salary %></td>
+  <td><%= vacancy.contacts %></td>
+  <td><%= skills(vacancy) %></td>
+  <td><%= link_to 'Show', vacancy %></td>
+  <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_vacancy_path(vacancy) %></td>
+  <td><%= link_to '<i class="glyphicon glyphicon-trash">'.html_safe, vacancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to "Искать трудяг", :action => "vacancy_employees", :vacancy => vacancy.id %></td>
+</tr>

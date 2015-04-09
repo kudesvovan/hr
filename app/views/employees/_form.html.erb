@@ -32,8 +32,11 @@
     <%= f.text_field :contacts %>
   </div>
   <div class="field">
-    <%= f.label "Статус" %><br>
-    <%= f.text_field :status %>
+    <%= f.label "В поисках" %><br>
+    <%= f.radio_button :status, 'yes' %>
+    <%= f.label :status, 'Yes', :value => 'yes' %>
+    <%= f.radio_button :status, 'no' %>
+    <%= f.label :status, 'No', :value => 'no' %>
   </div>
   <div class="field">
     <%= f.label "Зарплата" %><br>

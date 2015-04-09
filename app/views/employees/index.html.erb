@@ -1,37 +1,35 @@
 <h1>Список работников</h1>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>ФИО</th>
-      <th>Контакты</th>
-      <th>Статус</th>
-      <th>Зарплата</th>
-      <th>Умения</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @employees.each do |employee| %>
+<%= form_tag employees_path, :method => :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Поиск по умению", :name => nil %>
+<% end %>
+
+<%= form_tag destroy_multiple_employees_path, method: :delete do %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= image_tag employee.avatar_url(:thumb) if employee.avatar? %></td>
-        <td><%= employee.name %></td>
-        <td><%= employee.contacts %></td>
-        <td><%= employee.status %></td>
-        <td><%= employee.salary %></td>
-        <td><%= skills(employee) %></td>
-        </td>
-        <td><%= link_to 'Show', employee %></td> 
-        <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_employee_path(employee) %></td>
-        <td><%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th></th>
+        <th></th>
+        <th>ФИО</th>
+        <th>Контакты</th>
+        <th>В поисках</th>
+        <th>Зарплата</th>
+        <th>Умения</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <%= render @employees %>
+    </tbody>
+  </table>
+  <%= submit_tag "Delete selected", data: {confirm: 'Are you sure?'} %>|
+  <%= link_to 'New Employee', new_employee_path %></br>
+<% end %>
 
-<%= link_to 'New Employee', new_employee_path %>
+
+<%= will_paginate @employees, renderer: BootstrapPagination::Rails, class: "pagination-sm"  %>

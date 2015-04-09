@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 8)
     @skills = Skill.all
   end
 
@@ -68,6 +68,21 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def destroy_multiple
+    Employee.destroy(params[:employees]) unless params[:employees].nil?
+
+    respond_to do |format|
+      format.html { redirect_to employees_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def employee_vacancies
+    @employee = Employee.find_by_id(params[:employee])
+    @vacancies_all = full_fit_vacancies(@employee)
+    @vacancies_any = part_fit_vacancies(@employee)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
@@ -91,4 +106,6 @@ class EmployeesController < ApplicationController
     def set_avatar
       @employee.avatar = params[:file]
     end
+
+    
 end

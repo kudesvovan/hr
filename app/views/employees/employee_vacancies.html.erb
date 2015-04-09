@@ -1,0 +1,61 @@
+<h2>Вакансии для работника</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Дата создания</th>
+      <th>Срок действия</th>
+      <th>Зарплата</th>
+      <th>Контакты</th>
+      <th>Умения</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  	<h3>Полное совпадение</h3>
+			<% if @vacancies_all.count > 0 %>
+				<% @vacancies_all.each do |vacancy| %>
+			  	<tr>
+					  <td><%= vacancy.name %></td>
+					  <td><%= vacancy.date_in %></td>
+					  <td><%= vacancy.date_up %></td>
+					  <td><%= vacancy.salary %></td>
+					  <td><%= vacancy.contacts %></td>
+					  <td><%= skills(vacancy) %></td>
+					  <td><%= link_to 'Show', vacancy, :target => "_blank" %></td>
+					</tr>
+				<% end %>
+			<% end %>
+  </tbody>
+</table>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Дата создания</th>
+      <th>Срок действия</th>
+      <th>Зарплата</th>
+      <th>Контакты</th>
+      <th>Умения</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+		<h3>Частичное совпадение</h3>
+			<% if @vacancies_any.count > 0 %>
+				<% @vacancies_any.each do |vacancy| %>
+			  	<tr>
+					  <td><%= vacancy.name %></td>
+					  <td><%= vacancy.date_in %></td>
+					  <td><%= vacancy.date_up %></td>
+					  <td><%= vacancy.salary %></td>
+					  <td><%= vacancy.contacts %></td>
+					  <td><%= skills(vacancy) %></td>
+					  <td><%= link_to 'Show', vacancy, :target => "_blank" %></td>
+					</tr>
+				<% end %>
+			<% end %>
+  </tbody>
+</table>

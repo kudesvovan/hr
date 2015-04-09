@@ -1,0 +1,29 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ФИО</th>
+      <th>Контакты</th>
+      <th>Статус</th>
+      <th>Зарплата</th>
+      <th>Умения</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <h3>Полное совпадение</h3>
+    <% if @employees_all.count > 0 %>
+      <% @employees_all.each do |employee| %>
+        <tr>
+          <td><%= image_tag employee.avatar_url(:thumb) if employee.avatar? %></td>
+          <td><%= employee.name %></td>
+          <td><%= employee.contacts %></td>
+          <td><%= employee.status %></td>
+          <td><%= employee.salary %></td>
+          <td><%= skills(employee) %></td>
+          <td><%= link_to 'Show', employee, :target => "_blank" %></td> 
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

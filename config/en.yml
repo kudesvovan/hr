@@ -1,0 +1,12 @@
+en:
+	activerecord:
+		attributes:
+			employee:
+				name: "Введите ФИО полностью через пробел."
+		errors:
+			models:
+				employee:
+					attributes:
+						name:
+							blank: "is required"
+							invalid: "sdfsfgsdf"
