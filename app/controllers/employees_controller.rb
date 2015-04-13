@@ -1,10 +1,12 @@
 class EmployeesController < ApplicationController
+
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 8)
+    @employees = Employee.search(params[:search]).page(params[:page]).per(8)
     @skills = Skill.all
+
   end
 
   # GET /employees/1
@@ -79,8 +81,11 @@ class EmployeesController < ApplicationController
 
   def employee_vacancies
     @employee = Employee.find_by_id(params[:employee])
-    @vacancies_all = full_fit_vacancies(@employee)
-    @vacancies_any = part_fit_vacancies(@employee)
+    @vacancies_all_prev = full_fit_vacancies(@employee)
+    @vacancies_all = Kaminari.paginate_array(@vacancies_all_prev).page(params[:full_fit_page]).per(4)
+    @vacancies_any_dupl = part_fit_vacancies(@employee)
+    @vacancies_any = Kaminari.paginate_array(@vacancies_any_dupl - @vacancies_all_prev).page(params[:any_fit_page]).per(4)
+
   end
 
   private

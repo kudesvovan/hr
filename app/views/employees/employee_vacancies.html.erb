@@ -1,4 +1,4 @@
-<h2>Вакансии для работника</h2>
+<h2>Вакансии для <%= link_to 'работника', @employee, :target => "_blank" %></h2>
 
 <table class="table table-striped">
   <thead>
@@ -17,18 +17,20 @@
 			<% if @vacancies_all.count > 0 %>
 				<% @vacancies_all.each do |vacancy| %>
 			  	<tr>
-					  <td><%= vacancy.name %></td>
-					  <td><%= vacancy.date_in %></td>
-					  <td><%= vacancy.date_up %></td>
-					  <td><%= vacancy.salary %></td>
-					  <td><%= vacancy.contacts %></td>
-					  <td><%= skills(vacancy) %></td>
-					  <td><%= link_to 'Show', vacancy, :target => "_blank" %></td>
+					  <td class="col-md-1"><%= vacancy.name %></td>
+					  <td class="col-md-1"><%= vacancy.date_in %></td>
+					  <td class="col-md-1"><%= vacancy.date_up %></td>
+					  <td class="col-md-1"><%= vacancy.salary %></td>
+					  <td class="col-md-1"><%= vacancy.contacts %></td>
+					  <td class="col-md-6"><%= skills(vacancy) %></td>
+					  <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i>'.html_safe, vacancy, :target => "_blank" %></td>
 					</tr>
 				<% end %>
 			<% end %>
   </tbody>
 </table>
+
+<%= paginate @vacancies_all, :param_name => "full_fit_page" %>
 
 <table class="table table-striped">
   <thead>
@@ -47,15 +49,17 @@
 			<% if @vacancies_any.count > 0 %>
 				<% @vacancies_any.each do |vacancy| %>
 			  	<tr>
-					  <td><%= vacancy.name %></td>
-					  <td><%= vacancy.date_in %></td>
-					  <td><%= vacancy.date_up %></td>
-					  <td><%= vacancy.salary %></td>
-					  <td><%= vacancy.contacts %></td>
-					  <td><%= skills(vacancy) %></td>
-					  <td><%= link_to 'Show', vacancy, :target => "_blank" %></td>
+					  <td class="col-md-1"><%= vacancy.name %></td>
+					  <td class="col-md-1"><%= vacancy.date_in %></td>
+					  <td class="col-md-1"><%= vacancy.date_up %></td>
+					  <td class="col-md-1"><%= vacancy.salary %></td>
+					  <td class="col-md-1"><%= vacancy.contacts %></td>
+					  <td class="col-md-6"><%= skills(vacancy) %></td>
+					  <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i>'.html_safe, vacancy, :target => "_blank" %></td>
 					</tr>
 				<% end %>
 			<% end %>
   </tbody>
 </table>
+
+<%= paginate @vacancies_any, :param_name => "any_fit_page" %>

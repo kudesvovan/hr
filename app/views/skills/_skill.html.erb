@@ -2,7 +2,7 @@
   <td><%= check_box_tag "skills[]", skill.id %></td>
   <td><%= skill.id %></td>
   <td><%= skill.name %></td>
-  <td><%= link_to 'Show', skill %></td>
+  <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i>'.html_safe, skill %></td>
   <td><%= link_to '<i class="glyphicon glyphicon-pencil"></i>'.html_safe, edit_skill_path(skill) %></td>
   <td><%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, skill, method: :delete, data: { confirm: 'Are you sure?' }, remote:true, class: 'delete_skill' %></td>
 </tr>

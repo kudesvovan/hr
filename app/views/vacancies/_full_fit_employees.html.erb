@@ -1,12 +1,14 @@
+<% j "pagination" %>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th></th>
-      <th>ФИО</th>
-      <th>Контакты</th>
-      <th>Статус</th>
-      <th>Зарплата</th>
-      <th>Умения</th>
+      <th class="col-md-1"></th>
+      <th class="col-md-1">ФИО</th>
+      <th class="col-md-1">Контакты</th>
+      <th class="col-md-1">Статус</th>
+      <th class="col-md-1">Зарплата</th>
+      <th class="col-md-6">Умения</th>
       <th></th>
     </tr>
   </thead>
@@ -21,9 +23,12 @@
           <td><%= employee.status %></td>
           <td><%= employee.salary %></td>
           <td><%= skills(employee) %></td>
-          <td><%= link_to 'Show', employee, :target => "_blank" %></td> 
+          <td><%= link_to '<i class="glyphicon glyphicon-eye-open"></i>'.html_safe, employee, :target => "_blank" %></td> 
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
+
+
+<%= paginate @employees_all, :param_name => "full_fit_page" %>

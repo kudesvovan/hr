@@ -10,12 +10,12 @@
     <thead>
       <tr>
         <th></th>
-        <th>Название</th>
-        <th>Дата создания</th>
-        <th>Срок действия</th>
-        <th>Зарплата</th>
-        <th>Контакты</th>
-        <th>Умения</th>
+        <th class="col-md-1">Название</th>
+        <th class="col-md-1">Дата создания</th>
+        <th class="col-md-1">Срок действия</th>
+        <th class="col-md-1">Зарплата</th>
+        <th class="col-md-1">Контакты</th>
+        <th class="col-md-6">Умения</th>
         <th></th>
         <th></th>
         <th></th>
@@ -31,5 +31,5 @@
   <%= link_to 'New Vacancy', new_vacancy_path %>
 <% end %>
 
-<%= will_paginate @vacancies, renderer: BootstrapPagination::Rails, class: "pagination-sm" %>
+<%= paginate @vacancies %>
 

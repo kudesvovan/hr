@@ -2,12 +2,12 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th></th>
-        <th>id</th>
-        <th>Название</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th class="col-md-1"></th>
+        <th class="col-md-1">id</th>
+        <th class="col-md-5">Название</th>
+        <th class="col-md-1"></th>
+        <th class="col-md-1"></th>
+        <th class="col-md-1"></th>
       </tr>
     </thead>
 
@@ -20,7 +20,6 @@
 <% end %>
 
 
-<%= will_paginate @skills, renderer: BootstrapPagination::Rails, class: "pagination-sm" %></br>
 <!--
 <%= link_to 'New Skill', new_skill_path, remote: true, class: "new_skill" %>
 -->

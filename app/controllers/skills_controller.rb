@@ -5,7 +5,8 @@ class SkillsController < ApplicationController
   # GET /skills
   # GET /skills.json
   def index
-    @skills = Skill.search(params[:search]).paginate(:page => params[:page], :per_page => 8)
+    #@skills = Skill.search(params[:search]).paginate(:page => params[:page], :per_page => 8)
+    @skills = Skill.search(params[:search]).page(params[:page]).per(8)
     @skill = Skill.new
     respond_to do |format|
       format.html { }
@@ -92,7 +93,8 @@ class SkillsController < ApplicationController
       params.require(:skill).permit(:name, :search)
     end
 
-    def skill_params_new
-      params.require(:employee).permit(:name)
+    def skill_params
+      params.require(:skill).permit(:name)
     end
+
 end

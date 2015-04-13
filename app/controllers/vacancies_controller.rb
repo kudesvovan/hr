@@ -4,7 +4,7 @@ class VacanciesController < ApplicationController
   # GET /vacancies
   # GET /vacancies.json
   def index
-    @vacancies = Vacancy.search(params[:search]).paginate(:page => params[:page], :per_page => 8)
+    @vacancies = Vacancy.search(params[:search]).page(params[:page]).per(8)
   end
 
   # GET /vacancies/1
@@ -78,8 +78,11 @@ class VacanciesController < ApplicationController
 
   def vacancy_employees
     @vacancy = Vacancy.find_by_id(params[:vacancy])
-    @employees_all = full_fit_employees(@vacancy)
-    @employees_any = part_fit_employees(@vacancy)
+    @employees_all_prev = full_fit_employees(@vacancy)
+    @employees_all = Kaminari.paginate_array(@employees_all_prev).page(params[:full_fit_page]).per(4)
+    @employees_any_dupl = part_fit_employees(@vacancy)
+    @employees_any_prev = @employees_any_dupl - @employees_all_prev
+    @employees_any = Kaminari.paginate_array(@employees_any_prev).page(params[:any_fit_page]).per(4)
   end
 
   private

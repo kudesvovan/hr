@@ -35,9 +35,14 @@ gem 'carrierwave'
 
 gem 'mini_magick'
 
-gem 'will_paginate'
+#gem 'will_paginate', '~> 3.0'
 
-gem 'will_paginate-bootstrap'
+#gem 'will_paginate-bootstrap'
+
+gem 'therubyracer', :platform => :ruby
+
+gem 'kaminari'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
