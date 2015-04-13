@@ -70,4 +70,5 @@ class ApplicationController < ActionController::Base
     @employees=[]
     @employees = @search_result[:any]
   end
+
 end

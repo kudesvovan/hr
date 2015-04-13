@@ -4,5 +4,4 @@ module ApplicationHelper
 		x.skills.each {|skill| list << skill.name}
 		list.join(', ')
   end
-
 end

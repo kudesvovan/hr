@@ -43,6 +43,8 @@ gem 'therubyracer', :platform => :ruby
 
 gem 'kaminari'
 
+gem 'validates_email_format_of'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
