@@ -4,7 +4,7 @@
 body {
 	padding-top: 60px;
 	padding-bottom: 50px;
-	span.navbar-left{
+	#logo.navbar-left{
 		font-size:24px;
 		padding-top:15px;
 		color: #FFF;
@@ -14,6 +14,9 @@ body {
 		text-align:center;
 		position:relation;
 		margin-top:5px;
+		margin-bottom:0;
+		padding-top:40px;
+		padding-bottom:50px;
 		p{
 			color:#0080ff;
 		}
@@ -29,5 +32,16 @@ body {
 	}
 	.pagination-sm{
 		/*float:left;*/
+	}
+	.white, .white a {
+  color: #fff;
+	}
+	#image-bonsai{
+		display:block;
+		width: 150px;
+		margin:30px auto 25px;
+	}
+	.dropdown{
+		cursor:pointer;
 	}
 }

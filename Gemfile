@@ -45,6 +45,8 @@ gem 'kaminari'
 
 gem 'validates_email_format_of'
 
+gem 'devise'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

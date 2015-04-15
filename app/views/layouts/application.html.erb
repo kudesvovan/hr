@@ -14,14 +14,28 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-      	<span class= "nav navbar-nav navbar-left">HR</span>
+      	<!--<span class= "nav navbar-nav navbar-left">HR</span>-->
+        <%= link_to "HR", root_path, class: "nav navbar-nav navbar-left", id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   root_path %></li>
-            <li><%= link_to "Help",   '#' %></li>
-            <li><%= link_to "Работники", employees_path %></li>
-            <li><%= link_to "Вакансии", vacancies_path %></li>
-            <li><%= link_to "Умения", skills_path %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Home",   root_path %></li>
+              <li><%= link_to "Help",   '#' %></li>
+              <li><%= link_to "Работники", employees_path %></li>
+              <li><%= link_to "Вакансии", vacancies_path %></li>
+              <li><%= link_to "Умения", skills_path %></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-align-justify"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header"><%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-lg btn-primaty" %></li>
+                  <li class="dropdown-header"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-lg btn-primaty" %></li>
+                </ul>
+            <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
           </ul>
         </nav>
       </div>

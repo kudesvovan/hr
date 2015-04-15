@@ -1,12 +1,14 @@
 Hr::Application.routes.draw do
 
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+
   resources :skills do 
     collection do
       delete 'destroy_multiple'
     end
   end
 
-  root 'pages#home' 
+  root 'pages#home'
 
   get 'vacancy/vacancy_employees', to: 'vacancies#vacancy_employees'
   resources :vacancies do
