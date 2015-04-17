@@ -11,6 +11,8 @@ class SkillsController < ApplicationController
     respond_to do |format|
       format.html { }
       format.js
+      format.csv { render text: @skills.to_csv }
+      format.xls
     end
 
     @skill_search = Skill.search(params[:search])

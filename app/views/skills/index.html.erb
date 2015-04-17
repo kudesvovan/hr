@@ -1,8 +1,16 @@
 <h1>Каталог умений</h1>
-<%= form_tag skills_path, :method => :get do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
+<ul id="inline-block">
+  <li>
+    <%= form_tag skills_path, :method => :get do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    <% end %>
+  </li> 
+  <li class="to_right">
+    Загрузить: <%= link_to "CSV", skills_path(format: "csv") %> |
+    <%= link_to "Excel", skills_path(format: "xls") %> 
+  </li>
+</ul>
 
 <div id="skills">
   <%= render 'skills' %>

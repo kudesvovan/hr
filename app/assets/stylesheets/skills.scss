@@ -5,3 +5,13 @@
 input[type="submit"]:hover{
 	color:#0099ff;
 }
+
+ul#inline-block{
+	position:relative;
+	li{
+	display:inline-block;
+	}
+	.to_right{
+	float:right;
+	}
+}
