@@ -6,6 +6,8 @@ Hr::Application.routes.draw do
     collection do
       delete 'destroy_multiple'
     end
+
+    collection { post :import }
   end
 
   root 'pages#home'

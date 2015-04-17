@@ -84,6 +84,11 @@ class SkillsController < ApplicationController
     end
   end
 
+  def import
+    Skill.import(params[:file])
+    redirect_to skills_url, notice: "Skills imported"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_skill

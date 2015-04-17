@@ -15,3 +15,18 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+$(document).on("page:load ready", function() {
+	$('#selectAll').on("click", function() {
+		if (this.checked) {
+		  $(':checkbox').each(function() {
+		      this.checked = true;                        
+		  });
+		} else {
+		  $(':checkbox').each(function() {
+		      this.checked = false;                        
+		  });
+		};
+
+	});
+});
+

@@ -47,6 +47,7 @@ gem 'validates_email_format_of'
 
 gem 'devise'
 
+gem 'smarter_csv'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
