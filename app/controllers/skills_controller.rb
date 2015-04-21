@@ -1,5 +1,6 @@
 class SkillsController < ApplicationController
-  protect_from_forgery
+  #protect_from_forgery
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.to_s == 'application/json' }
   before_action :authenticate_user!
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
