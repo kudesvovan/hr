@@ -1,4 +1,5 @@
 class VacanciesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_vacancy, only: [:show, :edit, :update, :destroy]
 
   # GET /vacancies

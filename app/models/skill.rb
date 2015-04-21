@@ -21,12 +21,4 @@ class Skill < ActiveRecord::Base
 		end
 	end
 
-	def self.import(file)
-		CSV.foreach(file.path, headers: true) do |row|
-			#Skill.create! row.to_hash
-			skill = find_by_id(row["id"]) || new
-			skill.attributes = row.to_hash.slice(*row.to_hash.keys)
-			skill.save!
-		end
-	end 
 end

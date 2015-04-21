@@ -7,10 +7,6 @@
       <%= submit_tag "Search", :name => nil %>
     <% end %>
   </li> 
-  <li class="to_right">
-    Загрузить: <%= link_to "CSV", skills_path(format: "csv") %> |
-    <%= link_to "Excel", skills_path(format: "xls") %> 
-  </li>
 </ul>
 
 <div id="skills">
@@ -20,8 +16,3 @@
 <div id="paginator">
   <%= paginate @skills %></br>
 </div>
-
-<%= form_tag import_skills_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import CSV" %>
-<% end %>

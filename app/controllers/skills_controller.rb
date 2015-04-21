@@ -1,5 +1,6 @@
 class SkillsController < ApplicationController
   protect_from_forgery
+  before_action :authenticate_user!
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /skills
@@ -82,11 +83,6 @@ class SkillsController < ApplicationController
       format.html { redirect_to skills_url }
       format.json { head :no_content }
     end
-  end
-
-  def import
-    Skill.import(params[:file])
-    redirect_to skills_url, notice: "Skills imported"
   end
 
   private
