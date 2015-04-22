@@ -43,7 +43,7 @@ class SkillsController < ApplicationController
     respond_to do |format|
       if @skill.save
         format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
-        format.js
+        format.js { render layout: false }
         format.json { render :show, status: :created, location: @skill }
       else
         format.html { render :new }
