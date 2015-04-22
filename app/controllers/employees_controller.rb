@@ -28,8 +28,10 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
+    @skills = Skill.where(:id => params[:organizing_team])
+    @employee.skills << @skills
     set_avatar
-
+    
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
