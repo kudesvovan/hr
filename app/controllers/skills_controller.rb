@@ -13,8 +13,6 @@ class SkillsController < ApplicationController
     respond_to do |format|
       format.html { }
       format.js
-      format.csv { render text: @skills.to_csv }
-      format.xls
     end
 
     @skill_search = Skill.search(params[:search])
@@ -43,7 +41,7 @@ class SkillsController < ApplicationController
     respond_to do |format|
       if @skill.save
         format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
-        format.js { render layout: false }
+        format.js
         format.json { render :show, status: :created, location: @skill }
       else
         format.html { render :new }
