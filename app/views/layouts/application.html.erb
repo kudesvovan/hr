@@ -30,10 +30,10 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-header"><%= link_to '<span>Профиль <i class="glyphicon glyphicon-pencil"></i></span>'.html_safe, edit_user_registration_path, class: "btn btn-lg btn-primaty" %></li>
-                  <li class="dropdown-header"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-lg btn-primaty" %></li>
+                  <li class="dropdown-header"><%= link_to '<span>Logout <i class="glyphicon glyphicon-log-out"></i></span>'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-lg btn-primaty" %></li>
                 </ul>
             <% else %>
-              <li><%= link_to "Вход", new_user_session_path %></li>
+              <li><%= link_to '<span>Вход <i class="glyphicon glyphicon-log-in"></i></span>'.html_safe, new_user_session_path %></li>
               <li><%= link_to "Регистрация", new_user_registration_path %></li>
             <% end %>
           </ul>
