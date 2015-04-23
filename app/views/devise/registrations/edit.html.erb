@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "Эл-почта" %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -13,27 +13,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(оставьте поле пустым, если не хотите изменить пароль)</i><br />
+    <%= f.label :password, "Пароль" %> <i>(оставьте поле пустым, если не хотите изменить пароль)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Подтвердите пароль" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(введите текущий пароль)</i><br />
+    <%= f.label :current_password, "Текущий пароль" %><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Обновить" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Удаление профиля</h3>
 
 <%= button_to "Удалить мой профиль", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 
-<%= link_to "Back", :back %>
+<%= link_to "Назад", :back %>

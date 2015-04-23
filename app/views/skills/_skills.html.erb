@@ -15,8 +15,8 @@
       <%= render @skills %>
     </tbody>
   </table>
-  <%= submit_tag "Delete selected", data: { confirm: 'Умение может использоваться в вакансиях и сотрудниках. Продолжить?' } %>|
-  <%= link_to 'New Skill', new_skill_path, remote: true, class: "new_skill" %>
+  <%= submit_tag "Удалить", data: { confirm: 'Умение может использоваться в вакансиях и сотрудниках. Продолжить?' } %>|
+  <%= link_to 'Новое умение', new_skill_path, remote: true, class: "new_skill" %>
 <% end %>
 
 

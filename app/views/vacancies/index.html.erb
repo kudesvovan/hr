@@ -27,8 +27,8 @@
       <%= render @vacancies %>
     </tbody>
   </table>
-  <%= submit_tag "Delete selected", data: {confirm: 'Are you sure?'} %>|
-  <%= link_to 'New Vacancy', new_vacancy_path %>
+  <%= submit_tag "Удалить", data: {confirm: 'Вы уверены?'} %>|
+  <%= link_to 'Новая вакансия', new_vacancy_path %>
 <% end %>
 
 <%= paginate @vacancies %>

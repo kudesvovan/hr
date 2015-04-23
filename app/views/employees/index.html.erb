@@ -27,8 +27,8 @@
       <%= render @employees %>
     </tbody>
   </table>
-  <%= submit_tag "Delete selected", data: {confirm: 'Are you sure?'} %>|
-  <%= link_to 'New Employee', new_employee_path, :class => "btn-xs" %></br>
+  <%= submit_tag "Удалить", data: {confirm: 'Вы уверены?'} %>|
+  <%= link_to 'Новый работник', new_employee_path, :class => "btn-xs" %></br>
 <% end %>
 
 <%= paginate @employees %>

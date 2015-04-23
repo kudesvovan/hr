@@ -54,6 +54,7 @@
     <%= link_to 'Создать новое умение', new_skill_path, remote: true, class: 'new_skill' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Создать" if action_name == 'new' %>
+    <%= f.submit "Обновить" if action_name == 'edit' %>
   </div>
 <% end %>
