@@ -91,11 +91,12 @@ Hr::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   ActionMailer::Base.smtp_settings = {
-  :address            => 'smtp.gmail.com',
-  :port               => 587,
-  :domain             => 'hr4.herokuapp.com', 
-  :authentication     => "plain",
-  :user_name          => ENV["GMAIL_USERNAME"],
-  :password           => ENV["GMAIL_PASSWORD"]
+  :address            => 'smtp.sendgrid.net',
+  :port               => '587',
+  :domain             => 'heroku.com', 
+  :authentication     => :plain,
+  :user_name          => ENV["SENDGRID_USERNAME"],
+  :password           => ENV["SENDGRID_PASSWORD"],
+  :enable_starttls_auto => true
 }
 end
